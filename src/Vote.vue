@@ -31,7 +31,7 @@
     <header id="footer">
       <a :href="'http://twitter.com/raghavtosh'"> <i class="fab fa-twitter"></i></a>
       &nbsp;&nbsp;
-      <a :href="'http://twitter.com/raghavtosh'"> <i class="fab fa-github"></i></a>
+      <a :href="'http://github.com/traghav/podwhat'"> <i class="fab fa-github"></i></a>
       &nbsp;&nbsp;
       <a :href="'/'">Create your own list!</a>
 

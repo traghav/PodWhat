@@ -38,16 +38,16 @@
             <a :href="'/'" target="_new">Create your own list</a>
             <p></p>
 
-        Share this list on <a :href="'http://twitter.com/share?text=Check out my Podcast list at  &amp;url=http://podwhat.com/'+uurl+'&amp;hashtags=podwhat'"> <span class="label"><i class="fab fa-twitter"></i></span></a></p>
+        Share this list on <a :href="'http://twitter.com/share?text=Check out my Podcast list at  &amp;url=http://podwhat.com/#/'+uurl+'&amp;hashtags=podwhat'"> <span class="label"><i class="fab fa-twitter"></i></span></a></p>
         </div></section>
 
           <div id="foot">
     <header id="footer">
       <a :href="'http://twitter.com/raghavtosh'"> <i class="fab fa-twitter"></i></a>
       &nbsp;&nbsp;
-      <a :href="'http://twitter.com/raghavtosh'"> <i class="fab fa-github"></i></a>
+      <a :href="'http://github.com/traghav/podwhat'"> <i class="fab fa-github"></i></a>
       &nbsp;&nbsp;
-      <a :href="'/vote'">Vote on new features!</a>
+      <a :href="'/#/vote'">Vote on new features!</a>
       
 
        

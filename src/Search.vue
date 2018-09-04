@@ -72,10 +72,10 @@
         <input v-model="listname" placeholder="Name your list" type="text">
               <button type="submit" class="primary" v-on:click="submit" v-bind:disabled="listname.length <= 0 ? true : false">Submit</button>
        <p></p>
-        <div id="uurl" v-if="uurl.length>0">View your list at: <a :href="''+uurl" target="_new">http://podwhat.com/{{uurl}}</a>
+        <div id="uurl" v-if="uurl.length>0">View your list at: <a :href="'/#/'+uurl" target="_new">http://podwhat.com/#/{{uurl}}</a>
            <p>
 
-        Share your list on <a :href="'http://twitter.com/share?text=Check out my Podcast list at  &amp;url=http://podwhat.com/'+uurl+'&amp;hashtags=podwhat'"> <span class="label"><i class="fab fa-twitter"></i></span></a></p>
+        Share your list on <a :href="'http://twitter.com/share?text=Check out my Podcast list at  &amp;url=http://podwhat.com/#/'+uurl+'&amp;hashtags=podwhat'"> <span class="label"><i class="fab fa-twitter"></i></span></a></p>
         </div>
       </div>
     </section>
@@ -85,9 +85,9 @@
     <header id="footer">
       <a :href="'http://twitter.com/raghavtosh'"> <i class="fab fa-twitter"></i></a>
       &nbsp;&nbsp;
-      <a :href="'http://twitter.com/raghavtosh'"> <i class="fab fa-github"></i></a>
+      <a :href="'http://github.com/traghav/podwhat'"> <i class="fab fa-github"></i></a>
       &nbsp;&nbsp;
-      <a :href="'/vote'">Vote on new features!</a>
+      <a :href="'/#/vote'">Vote on new features!</a>
 
        
    </header>
