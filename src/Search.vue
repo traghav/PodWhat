@@ -119,7 +119,7 @@ export default {
 
         const vm=this;
         loading(true)
-        var link=`https://itunes.apple.com/search?term=${encodeURIComponent(search)}&limit=4&media=podcast`
+        var link=`https://itunes.apple.com/search?term=${encodeURIComponent(search)}&limit=5&media=podcast`
         fetch(link)
           .then(res => res.json())
           .then(res => {
