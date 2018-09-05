@@ -85,6 +85,7 @@ table {
 
 body {
   -webkit-text-size-adjust: none;
+
 }
 
 mark {
@@ -112,6 +113,14 @@ input, select, textarea {
 
   body {
     -ms-overflow-style: scrollbar;
+  }
+
+  .vsc-initialized {
+      background: #fff;
+      background-image: url("images/overlay.png"), url("images/pattern-size3.svg");
+      background-position: top left, center center;
+      background-attachment: fixed, fixed;
+      background-size: auto, cover;
   }
 
   @media screen and (max-width: 360px) {
@@ -2203,6 +2212,7 @@ input, select, textarea {
     textarea:focus {
       border-color: #4696e5;
       box-shadow: 0 0 0 1px #4696e5;
+      background-color: #ffffff;
     }
 
   .select-wrapper:before {
@@ -2950,7 +2960,7 @@ input, select, textarea {
 
   .wrapper {
     padding: 1em 0 0.75em 0 ;
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
     /*border-bottom: solid 2px #eeeeee;*/
   }
 
