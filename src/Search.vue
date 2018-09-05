@@ -2,7 +2,7 @@
   <div id="app">
     
     <div id="search">
-      <v-select v-model="selected" label="collectionName" placeholder="Add Podcasts"  :options="options" @search="search" :clearSearchOnSelect="true">
+      <v-select v-model="selected" label="collectionName" placeholder="Add Podcasts"  :options="optionz" @search="search" :clearSearchOnSelect="true">
       <template slot="no-options">
       type to search Podcasts..
     </template>
@@ -98,13 +98,15 @@
 
 <script>
 import firebase from 'firebase';
-
+import itunesApiSearch from 'itunes-api-search';
+import fetchJsonp from 'fetch-jsonp';
 export default {
   name: 'app',
   data () {
     return {
       selected:null,
       options:[],
+      optionz:[],
       added:[],
       stateChanger:false,
       searching:false,
@@ -118,22 +120,38 @@ export default {
 
 
         const vm=this;
+        const aa=this;
         loading(true)
-        var link=`https://itunes.apple.com/search?term=${encodeURIComponent(search)}&limit=5&media=podcast`
-        fetch(link)
-          .then(res => res.json())
-          .then(res => {
-            //console.log(res.results)
-            this.options = res.results;
+        var link=`https://itunes.apple.com/search?term=${encodeURIComponent(search)}&limit=5&media=podcast&callback=cb`;
+        // fetch(link)
+        //   .then(res => res.json())
+        //   .then(res => {
+        //     //console.log(res.results)
+        //     this.options = res.results;
             
-            if(res.results.length>0){
-              loading(false);  
-            }
+        //     if(res.results.length>0){
+        //       loading(false);  
+        //     }
             
             
-          });
-          
-          
+        //   });
+
+
+        fetchJsonp(link)
+          .then(function(response) {
+            return response.json()
+          }).then(function(json) {
+            vm.optionz=json.results;
+            console.log('parsed json', json.results[0].collectionName)
+            loading(false);
+          }).catch(function(ex) {
+            console.log('parsing failed', ex)
+          })
+         
+        
+
+
+
          
         },
         remove(value){
