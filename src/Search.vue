@@ -6,7 +6,7 @@
 
     <div>
       
-      <multiselect v-model="selected" id="ajax" label="collectionName" track-by="collectionName" placeholder="Type to search" open-direction="bottom" :options="optionz" :multiple="false" :searchable="true" :loading="isLoading" :internal-search="false" :clear-on-select="false" :close-on-select="true" :options-limit="5" :max-height="600" :show-no-results="false" :hide-selected="true" @search-change="asyncFind">
+      <multiselect v-model="selected" id="ajax" label="collectionName" track-by="collectionName" placeholder="Add your podcasts" open-direction="bottom" :options="optionz" :multiple="false" :searchable="true" :loading="isLoading" :internal-search="false" :clear-on-select="false" :close-on-select="true" :options-limit="5" :max-height="600" :show-no-results="false" :hide-selected="true" @search-change="asyncFind">
     
         <template slot="option" slot-scope="props">
         <div class="d-center">
@@ -70,7 +70,7 @@
     <section id="three" class="wrapper">
       <div class="inner">
         <input v-model="listname" placeholder="Name your list" type="text">
-              <button type="submit" class="primary" v-on:click="submit" v-bind:disabled="listname.length <= 0 ? true : false">Submit</button>
+              <button type="submit" class="primary" v-on:click="submit" v-bind:disabled="listname.length <= 0 ? true : false"> Submit </button>
        <p></p>
         <div id="uurl" v-if="uurl.length>0">View your list at: <a :href="'/#/'+uurl" target="_new">http://podwhat.com/#/{{uurl}}</a>
            <p>
