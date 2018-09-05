@@ -3,7 +3,7 @@
     <header id="header">
       <div class="content">
   	   <a href="/"><h1>Pod<b>what</b></h1></a>
-       <p>What Podcasts are you listening to?</p>
+       <p>What podcasts are you listening to?</p>
       </div>
 <!--       <div class="image phone">
         <div class="inner">

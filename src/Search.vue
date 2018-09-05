@@ -162,7 +162,7 @@ export default {
         asyncFind (query) {
           this.isLoading = true
           const aa=this;
-          var link=`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&limit=5&media=podcast&callback=cb`;
+          var link=`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&limit=5&media=podcast`;
           fetchJsonp(link)
           .then(function(response) {
             return response.json()
@@ -171,7 +171,7 @@ export default {
             
             aa.isLoading= false;
           }).catch(function(ex) {
-            
+            console.log(ex);
           })
         },
         clearAll () {
