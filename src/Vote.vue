@@ -54,8 +54,11 @@ export default {
     }
   },
   methods: {
+    track () {
+      this.$ga.page('/')
+    },
     fetchData () {
-      console.log("fetchhh!")
+      
       var database = firebase.database();
       const vm=this;
       firebase.database().ref('/Vote/').once('value').then(function(snapshot) {var data = (snapshot.val() && snapshot.val()) || 'null';
