@@ -3,6 +3,7 @@
     
     <div id="search">
 
+
     <div>
       
       <multiselect v-model="selected" id="ajax" label="collectionName" track-by="collectionName" placeholder="Type to search" open-direction="bottom" :options="optionz" :multiple="false" :searchable="true" :loading="isLoading" :internal-search="false" :clear-on-select="false" :close-on-select="true" :options-limit="5" :max-height="600" :show-no-results="false" :hide-selected="true" @search-change="asyncFind">
@@ -252,5 +253,19 @@ export default {
   color: #fff;
 }
 
+#search .multiselect__spinner:before {
+  border-color: #5ca3e8 transparent transparent;
+}
 
+#search .multiselect__tag {
+  background: #5ca3e8;
+}
+
+#search .multiselect__option--highlight {
+  background: #5ca3e8;
+}
+
+#search .multiselect__option--highlight:after {
+  background: #5ca3e8;
+}
 </style>
