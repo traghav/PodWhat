@@ -2,27 +2,26 @@
   <div id="app">
     
     <div id="search">
-      <v-select v-model="selected" label="collectionName" placeholder="Add Podcasts"  :options="optionz" @search="search" :clearSearchOnSelect="true">
-      <template slot="no-options">
-      type to search Podcasts..
-    </template>
-    <template slot="option" slot-scope="option">
-      <div class="d-center">
-        <img :src='option.artworkUrl60'/> 
-        {{ option.collectionName }}
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <i>{{ option.artistName }}</i>
-        </div>
-    </template>
-    <template slot="selected-option" scope="option">
-      <div class="selected d-center">
-        <img :src='option.artworkUrl60'/> 
-        {{ option.collectionName }}
-      </div>
-    </template>
+
+    <div>
+      
+      <multiselect v-model="selected" id="ajax" label="collectionName" track-by="collectionName" placeholder="Type to search" open-direction="bottom" :options="optionz" :multiple="false" :searchable="true" :loading="isLoading" :internal-search="false" :clear-on-select="false" :close-on-select="true" :options-limit="5" :max-height="600" :show-no-results="false" :hide-selected="true" @search-change="asyncFind">
     
-  </v-select>
-  
+        <template slot="option" slot-scope="props">
+        <div class="d-center">
+        <img :src='props.option.artworkUrl60'/> 
+        {{ props.option.collectionName }}
+        </div>
+        </template>
+        <template slot="singleLabel" slot-scope="props">
+          <div class="selected d-center">
+            <img :src='props.option.artworkUrl60'/> 
+            {{ props.option.collectionName }}
+          </div>
+        </template>
+      </multiselect>
+    </div> 
+
   </div>
   
   
@@ -98,62 +97,23 @@
 
 <script>
 import firebase from 'firebase';
-import itunesApiSearch from 'itunes-api-search';
+import _ from 'lodash';
 import fetchJsonp from 'fetch-jsonp';
 export default {
   name: 'app',
   data () {
     return {
       selected:null,
-      options:[],
       optionz:[],
       added:[],
       stateChanger:false,
       searching:false,
       listname:'',
+      isLoading: false,
       uurl:''
     }
   },
   methods: {
-        search(search,loading) {
-
-
-
-        const vm=this;
-        const aa=this;
-        loading(true)
-        var link=`https://itunes.apple.com/search?term=${encodeURIComponent(search)}&limit=5&media=podcast&callback=cb`;
-        // fetch(link)
-        //   .then(res => res.json())
-        //   .then(res => {
-        //     //console.log(res.results)
-        //     this.options = res.results;
-            
-        //     if(res.results.length>0){
-        //       loading(false);  
-        //     }
-            
-            
-        //   });
-
-
-        fetchJsonp(link)
-          .then(function(response) {
-            return response.json()
-          }).then(function(json) {
-            vm.optionz=json.results;
-            console.log('parsed json', json.results[0].collectionName)
-            loading(false);
-          }).catch(function(ex) {
-            console.log('parsing failed', ex)
-          })
-         
-        
-
-
-
-         
-        },
         remove(value){
           this.stateChanger=!this.stateChanger
           for (var i = this.added.length - 1; i >= 0; i--) {
@@ -191,7 +151,28 @@ export default {
             .replace(/\-\-+/g, '-')
             .replace(/^-+/, '')
             .replace(/-+$/, '');
+        },
+
+        
+        asyncFind (query) {
+          this.isLoading = true
+          const aa=this;
+          var link=`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&limit=5&media=podcast&callback=cb`;
+          fetchJsonp(link)
+          .then(function(response) {
+            return response.json()
+          }).then(function(json) {
+            aa.optionz=json.results;
+            
+            aa.isLoading= false;
+          }).catch(function(ex) {
+            
+          })
+        },
+        clearAll () {
+          this.optionz = []
         }
+
         
 
   },
@@ -213,6 +194,7 @@ export default {
 
 }
 </script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style>
 

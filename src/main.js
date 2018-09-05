@@ -7,7 +7,7 @@ import Multiselect from 'vue-multiselect'
 import firebase from 'firebase';
 import uuidv1 from 'uuid';
 import router from './router';
-
+Vue.component('multiselect', Multiselect)
 var config = {
     apiKey: "AIzaSyCCthibXD_sPqZXcGMzUM_3lGKiylnPRjk",
     authDomain: "podwhatapp.firebaseapp.com",
